@@ -5,12 +5,17 @@
  */
 
 public class Town {
+    // private finals
+    private final String[] ALL_TREASURES = {"crown", "trophy", "gem", "dust"};
+
     // instance variables
     private Hunter hunter;
     private Shop shop;
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private String treasure;
+    private boolean treasureFound;
 
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
@@ -21,6 +26,8 @@ public class Town {
     public Town(Shop shop, double toughness) {
         this.shop = shop;
         this.terrain = getNewTerrain();
+        treasure = ALL_TREASURES[(int) (Math.random() * 4)];
+        treasureFound = false;
 
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
@@ -150,5 +157,35 @@ public class Town {
     private boolean checkItemBreak() {
         double rand = Math.random();
         return (rand < 0.5);
+    }
+
+    public void findTreasure() {
+        boolean treasureIsDust = treasure.equals("dust");
+        boolean hunterAlreadyFound = false;
+        if (treasureFound) {
+            System.out.println("You have already searched this town.");
+        } else {
+            System.out.println("You search for the treasure...");
+            System.out.println("You found: " + treasure);
+            treasureFound = true;
+            if (treasureIsDust) {
+                System.out.println("No shiny treasure this time :(");
+            } else {
+                for (String i : hunter.getTreasureList()) {
+                    if (i != null) {
+                        if (i.equals(treasure)) {
+                            hunterAlreadyFound = true;
+                        }
+                    }
+                }
+                if (!hunterAlreadyFound) {
+                    hunter.updateTreasureList(treasure);
+                } else {
+                    System.out.println("You already have this treasure!");
+                }
+            }
+
+
+        }
     }
 }
