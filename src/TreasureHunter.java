@@ -54,13 +54,13 @@ public class TreasureHunter {
             hardMode = true;
         }
         if (hard.equals("test")) {
-            hunter.changeGold(134);
+            hunter.changeGold(144);
             hunter.buyItem("water", 2);
             hunter.buyItem("rope", 4);
             hunter.buyItem("machete", 6);
+            hunter.buyItem("boots", 10);
             hunter.buyItem("horse", 12);
             hunter.buyItem("boat", 20);
-
         }
     }
 
