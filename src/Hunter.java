@@ -35,7 +35,10 @@ public class Hunter {
     public void changeGold(int modifier) {
         gold += modifier;
         if (gold < 0) {
-            gold = 0;
+            System.out.println("***");
+            System.out.println("You don't have enough gold to give.");
+            System.out.println("game over.");
+            System.exit(0);
         }
     }
 
