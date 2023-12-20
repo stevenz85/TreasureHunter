@@ -16,6 +16,7 @@ public class TreasureHunter {
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    public static boolean easyMode = false;
 
     /**
      * Constructs the Treasure Hunter game.
@@ -48,12 +49,12 @@ public class TreasureHunter {
         // set hunter instance variable
         hunter = new Hunter(name,  10);
 
-        System.out.print("Hard mode? (y/n): ");
-        String hard = SCANNER.nextLine().toLowerCase();
-        if (hard.equals("y")) {
+        System.out.print("Easy, normal, or hard mode? (e/n/h): ");
+        String mode = SCANNER.nextLine().toLowerCase();
+        if (mode.equals("h")) {
             hardMode = true;
         }
-        if (hard.equals("test")) {
+        if (mode.equals("test")) {
             hunter.changeGold(152);
             hunter.buyItem("water", 2);
             hunter.buyItem("rope", 4);
@@ -62,6 +63,10 @@ public class TreasureHunter {
             hunter.buyItem("boots", 10);
             hunter.buyItem("horse", 12);
             hunter.buyItem("boat", 20);
+        }
+        if (mode.equals("e")) {
+            easyMode = true;
+            hunter.changeGold(10);
         }
     }
 
@@ -79,6 +84,10 @@ public class TreasureHunter {
             toughness = 0.75;
         }
 
+        if(easyMode) {
+            markdown = 1;
+            toughness = 0.2;
+        }
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance
         // variable; we can leave it as a local variable
