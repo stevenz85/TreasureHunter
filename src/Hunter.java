@@ -12,6 +12,7 @@ public class Hunter {
 
     private String[] treasureList;
     private int treasureNum;
+
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
      *
@@ -30,13 +31,23 @@ public class Hunter {
         return treasureList;
     }
 
-    public int getTreasureNum() {
-        return treasureNum;
-    }
 
     public void updateTreasureList(String treasure) {
         treasureList[treasureNum] = treasure;
         treasureNum++;
+    }
+
+    public String foundTreasures() {
+        String treasuresFound = "You found: ";
+        if (treasureList[0] == null) {
+            return treasuresFound + "none";
+        }
+        for (String i : treasureList) {
+            if (i != null) {
+                treasuresFound += i + ", ";
+            }
+        }
+        return treasuresFound.substring(0, treasuresFound.length() - 2);
     }
 
     //Accessors
