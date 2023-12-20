@@ -6,7 +6,7 @@
 
 public class Town {
     // private finals
-    private final String[] ALL_TREASURES = {"crown", "trophy", "gem", "dust"};
+    private final String[] ALL_TREASURES = {"a crown", "a trophy", "a gem", "dust"};
 
     // instance variables
     private Hunter hunter;
@@ -186,11 +186,20 @@ public class Town {
                 } else {
                     System.out.println("You already have this treasure!");
                 }
-            }
 
+            }
+        allTreasuresFound();
 
         }
     }
+
+    public void allTreasuresFound() {
+        if (hunter.getTreasureList()[2] != null) {
+            System.out.println("Congratulations, you have found the last of the three treasures, you win!");
+            System.exit(0);
+        }
+    }
+
     public void digForGold() {
         if (!dug) {
             if (hunter.hasItemInKit("shovel")) {
