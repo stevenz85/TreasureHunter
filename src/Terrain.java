@@ -1,12 +1,8 @@
-/**
- * The Terrain class is designed to represent the zones between the towns in the Treasure Hunter game.
- * This code has been adapted from Ivan Turner's original program -- thank you Mr. Turner!
- */
-
 public class Terrain {
     // instance variables
     private String terrainName;
     private String neededItem;
+
 
     /**
      * Sets the class member variables
@@ -19,14 +15,17 @@ public class Terrain {
         neededItem = item.toLowerCase();
     }
 
+
     // accessors
     public String getTerrainName() {
         return Colors.CYAN + terrainName + Colors.RESET;
     }
 
+
     public String getNeededItem() {
         return neededItem;
     }
+
 
     /**
      * Guards against a hunter crossing the zone without the proper item.
@@ -41,6 +40,7 @@ public class Terrain {
         }
         return false;
     }
+
 
     /**
      * @return A string representation of the terrain and item to cross it.
